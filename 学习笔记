@@ -1,0 +1,494 @@
+# java-2为什么要用Array
+为什么要用Array
+为什么使用数组Array：
+一个养鸡场有6只鸡，它们的体重分别是3kg,5kg，1kg，3.4kg，2kg
+50kg。请问这六只鸡的总体重是多少？平均体重是多少？平均体重是多少？
+思路：
+定义6个变量，加起来总体重在商6
+这是传统想法
+数组介绍：
+数组可以存放多个同一类型的数据。数组也是一种数据类型，是引用类型。
+即：数组就是一组数据
+数组快速入门
+//数组的引出
+//
+class array1{
+
+	public static void main(String[] args) {
+		
+
+		/*
+		他们的体重分别是3kg，5kg，1kg，3.4kg，2kg，50kg
+		请问这六只鸡的总体重是多少？平均体重是多少？
+		思路分析：
+		1.定义六个变量 double， 求和 得到总体重
+		2.平均体重 = 总体重/6
+		3.分析传统实现的方式问题。 
+		*/
+		// double hen1 = 3;
+		// double hen1 = 5;
+		// double hen1 = 1;
+		// double hen1 = 3.4;
+		// double hen1 = 2;
+		// double hen1 = 50;
+
+  //       double totalWeight = hen1 +hen2+hen3+hen4+hen5+hen6;
+		// double avgWeight = totalWeight/6; 
+        
+        double[]hens={3,5,1,3.4,2,50,55,12,33,11};//double[]表示double类型的数组，数组名 hens
+        //2.{3,5,1等}表示数组的值/元素， 依次表示数组
+        //遍历数组得到数组的所有元素的和：使用for
+        //下标是从0开始编号的比如第一个元素是hens【0】
+        //第二个元素就是 hens[1],以此类推    
+        //通过for就可以循环的访问 数组的元素/值
+        //3.使用一个变量 totalWeight 将各个元素累及
+        System.out.println("输入数组");
+        //老师提示：可以通过数组名.length 得到数组的大小/长度
+        System.out.println("数组的长度="+ hens.length);//利用length 获得数组长度
+        double totalWeight =0;
+
+        for(int i =0; i<hens.length; i++){
+
+        	System.out.println("第"+(i+1)+"个元素的值=" + hens[i]);
+        	totalWeight += hens[i];
+        }
+
+         System.out.println(totalWeight/hens.length);
+
+
+
+
+
+	}
+}
+
+                                   数组的使用
+使用方式1- 动态初始化
+数组的定义
+数据类型 数组名=new数据类型【大小】
+int a[]=new int[3];//创建了一个数组，名字a，存放5个int
+说明：这是定义数组的一种方法。为了让大家明白， 我画数组内存图说明
+a:a[0]a[1]a[30]   靠这个访问                  三楼：第一个房间，第二个房间，第三个房间
+数组的引用（使用/访问/获取数组元素）
+数组名【下标/索引/index】比如： 你要使用a数组的第3个数 a[2]
+
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+ class array2{
+
+
+
+ 	public static void main(String[] args) {
+  		// 演示 数据类型数组名[]=new 数据类型[大小]
+        //循环输入5个成绩 保存到double数组，并输出
+        //步骤
+        //1.创建一个 double 数组， 大小 5		
+          double [] scores = new double[5];// 5是指数组长度也可以double scores[] = new double[]
+也可以这样
+double[]score ;//声明数组
+     score = new double[5]；//分配内存空间，可以存放数据
+       // 2.循环输入
+          
+           Scanner myScanner = new Scanner(System.in);
+          for (int i = 0; i < scores.length;i++){
+ 
+          	System.out.println("请输入第"+(i+1)+"个元素的值");
+          	scores[i] = myScanner.nextDouble();
+
+          }//output
+            System.out.println("==数组的元素/值的情况如下");
+ 	     for (int i = 0; i < scores.length;i++){
+
+          	System.out.println("请输入第"+(i+1)+"个元素的值" + scores[i]);
+    
+
+       }   }
+ }
+使用方式2-动态初始化
+
+先声明数组
+语法：数据类型 数组名【】；也可以 数据类型[]数组名：
+int a[]; 或者 int[] a;
+创建数组
+语法： 数组名= new 数据类型[大小]；
+a=new int [10];
+
+
+数组的使用
+使用哦该方式3-静态初始化
+初始化数组
+语法： 数据类型数组名[]={元素值，元素值。。}
+int a[]}
+
+
+
+数组使用注意事项和细节
+1.数组是多个相同类型数据的组合，实现对这些数据的统一管理
+2.数组中的元素可以使任何数据类型，包括基本类型和引用类型，但是不能混用。
+3.数组创建后，如果没有赋值，有默认值 int 0, short0,byte 0.0, double 0.0, char\u0000, boolean false, String null
+4.使用数组的步骤1.声明数组并开辟空间 2 给数组各个元素赋值 3 使用数组
+5.数组的下标是从0开始的。
+6.数组下标必须在指定范围内使用， 否则报： 下标越界异常， 比如int[] arr = new int[5]; 则有效下标为0-4
+7.数组属引用类型， 数组型数据是对象（object）
+
+import java.util.Scanner;
+ class array2{
+   public static void main(String[] args) {
+    //.数组是多个相同类型数据的组合，实现对这些数据的统一管理
+    //创建一个char类型的26个元素的数组，分别放置‘A-Z’。 使用for循环访问所有元素并打印出来。
+    //提示：char类型数据运算‘A’+1-》‘B’
+       char[]score = new char[26];
+       for(int i =0; i < score.length; i++){
+               
+               score[i]=(char)('A' + i);
+                   
+       }for(int i =0; i < score.length; i++){
+
+                  System.out.println(score[i]);
+       }
+
+        
+
+   }
+ }
+class array3{
+
+	public static void main(String[] args) {
+		//请求出数组中的最大值
+		// int[]arr = {4,-1,9,10,23};
+		// for(int i=0; i < 5; i++){
+
+       //假定 max = arr[0]是最大值， maxIndex=0;
+			//从下标1开始遍历arr，如果max < 当前元素，说明Max不是真正的最大值
+			//最大值， 我们就 max=当前元素; maxIndex= 当前元素下标
+			//当我们遍历这个数组arr后， max就是真正的最大值， maxIndex最大值
+			//对应的下标
+			int[]arr = {4,-1,9,10,23};
+			int max = arr[0];//假定第一个元素就是最大值
+			int maxIndex = 0;
+			for(int i = 1; i < arr.length; i++){
+
+				if(max < arr[i]){
+					max = arr[i];//把max 设置成 当前元素
+					maxIndex = i;//maxIndex=i这就是下标 
+
+				}
+			}//当我们遍历这个数组arr后， max就是真正的最大值， maxIndex最大值下标
+			System.out.println("max="+ max+"maxIndex="+ maxIndex);
+
+		}
+	}
+
+
+数组赋值机制
+
+基本数据类型赋值， 这个值就是具体的数据，而且相互不影响。
+ int n1 = 2； int n2 = n1；n2 不会影响 n1
+数组在默认情况下是引用传递， 赋的值是地址
+看一个案例， 并分析数组赋值的内存图
+int[]arr1 ={1,2,3};
+int[]arr2 = arr1;//把arr1赋值给arr2
+arr[0] = 10;
+//看看arr1的值
+for(int i =0; i< arr1.llength; i++)){
+System.out.pritnln(arr1[i]);
+
+数组翻转
+需求： 把数组的元素内容反转
+arr{11，22，33}-> arr{33,22,11};
+1.通过找规律翻转
+2，使用逆序赋值方式
+
+int []array1 ={11,22,33,44,55,66,};
+		//把arr【0】 和 arr【5】 进行交换{}
+		//把arr【1】和arr【4】进行交换
+		//把arr【2】和arr【3】进行交换
+		//一共交换3次 = arr.lenth/2
+		//下标是递进和递减
+		//arr[i]和 arr【arr.length - 1 -i】
+		int len = arr.length;
+
+
+		for( int i = 0; i <arr.length/2; i++){
+			int temp = arr[arr.length-1-i];
+			arr[arr.length -1-i]= arr[i];
+			arr[len - 1 - i]= arr[i];
+			arr[i] = temp;
+			System.out.println(array1[i]);
+
+
+
+
+public static void main(String[] args) {
+       		int[]arr = {11,22,33,44,55,66};
+       		//使用逆序赋值方式
+       		//1.先创建一个新的数组 arr2， 大小arr.length
+       		//2. 逆序遍历 arr, 将每个元素拷贝到arr2的元素中(顺序拷贝)
+       		int[] arr2 = new int[arr.length];
+       		for(int i = arr.length-1, j=0;i>=0 ;i--, j++){
+       			arr2[j] = arr[i];//指向的意思是arr空间变arr2，此时arr原来的数据空间没有使用，被当做垃圾销毁
+
+       		}
+       		//4.当for循环结束， arr2就是一个逆序的数组{66,55,44,33,22,11}
+       		//5.让arr 指向arr2数据空间
+
+       		for(int i =0; i < arr.length; i++){
+       			System.out.print(arr2[i]+ " ");
+       		}
+		}
+
+
+
+
+数组的添加
+要求： 实现动态的给数组添加元素效果， 实现对数组扩容。
+1.原始数组使用静态分配 int[]arr={1,2,3}
+2.增加的元素，直接放在数组的最后arr={1,2,3,4}
+3.用户可以通过如下方法来决定是否继续添加，添加成功 是否继续？y/n
+      
+
+
+
+
+public static void main(String[] args) {
+// 		实现动态的给数组添加元素效果， 实现对数组扩容。
+// 1.原始数组使用静态分配 int[]arr={1,2,3}
+// 2.增加的元素，直接放在数组的最后arr={1,2,3,4}
+// 3.用户可以通过如下方法来决定是否继续添加，添加成功 是否继续？y/n
+
+	  int arr[]= {1,2,3};//下标0-2 不能直接 a[3]=4 会导致越界
+	  int arr1[]= new int[arr.length+1];//定义一个新数组
+	  
+      
+
+	  for(int i = 0 ; i < arr.length ; i++){//遍历arr数组，依次将arr的元素拷贝到arrNew数组
+             arr1[i] = arr[i];
+                   
+	  }      
+	         arr1[arr1.length-1]=4;//定义第四个数。
+	         arr = arr1;//让arr指向arrNew，
+        System.out.print("arr扩容后");                 
+	 for(int i =0; i< arr.length;i++) {
+              System.out.print(arr[i] + "\t");
+	  	}
+
+
+
+
+
+                            扩容
+
+import java.util.Scanner;
+
+class array7{
+	public static void main(String[] args) {
+       int []array1 = {1,2,3,4,5};
+     //用户通过如下方法来决定是否继续对数组扩容，添加成功，是否继续？
+       //y/n
+ /*1.定义初始数组int 【】 arr ={1,2,3,4}//下标 0-2
+         2.定义一个新的数组int【】arrNew = new int【arr.length+1】;
+         3.遍历arr数组，依次将arr的元素拷贝到arrNew数组
+         4.将4赋给arrNew【arrNew.length - 1】 = 4; 把4赋给arrNew最后一个元素
+         5.rangarr指向arrNew； arr= arrNew； 那么 原来arr数组就被销毁
+         6.创建一个Scanner可以接收用户输入
+         7.因为用户什么时候退出，不确定， 使用do-while +break 来控制
+         */
+      do{  
+ 	             int[]arrNew =new int[array1.length+1];
+       	 //遍历arr数组，依次将arr的元素拷贝到arrNew数组
+       	for(int i = 0; i < array1.length ; i++){     
+       	               arrNew[i]=array1[i];
+  }
+       	Scanner myScanner = new Scanner(System.in);           
+       	 System.out.println("请输入你要添加的元素？"); 
+                  int addNum = myScanner.nextInt();
+                  arrNew[arrNew.length-1] = addNum;
+              //让 array1 指向 arrNew;
+                  array1 =arrNew;
+              System.out.println("========arr扩容情况=======");
+               for(int i = 0; i < array1.length;i++){
+               	System.out.print(array1[i] + "\t");
+               }
+                    System.out.println("是否继续添加？");
+              char n = myScanner.next().charAt(0);
+            
+               if(n == '否'){ break;}       
+        }while(true); 
+                   System.out.println("你退出了");
+}
+ 	 }
+相反缩减元素：
+
+import java.util.Scanner;
+    class array8 {
+        public static void main(String[] args) {
+            int[] arr = {1,2,3,1,4,5,6,};
+            do {   int[] arrNew = new int[arr.length-1];
+                for (int i = 0; i < arr.length - 1; i++) {
+                    arrNew[i] = arr[i];
+                    System.out.print(arr[i]);
+                }
+                Scanner myScanner = new Scanner(System.in);
+                System.out.println("提示是否要继续缩减");
+                char key = myScanner.next().charAt(0);
+                if (key == '是') {
+                    arr = arrNew;
+                    System.out.print("缩减情况arr");
+                    for (int i = 0; i < arr.length - 1; i++) {
+                        System.out.print(arr[i] + "\t");
+                    }
+                    System.out.println("缩减了元素" + arr[arr.length - 1]);
+                    if (arr.length == 2) {
+                        System.out.println("剩了元素" + arrNew[0] + "不能继续缩减");
+                        return; }
+                }
+            } while (true);
+        }
+    }
+
+排序的介绍：
+排序是将多个数据，依指定的顺序进行排列的过程。
+排序的分类：
+1.内部排序
+指将需要处理的所有数据都加载到内部存储器中进行排序。 包括（交换式排序法，选择式排序法和插入式排序法）；
+）
+2.外部排序法
+数据量过大，无法全部加载到内存中，需要借助外部存储进行排序。包括（合并排序法和直接合并排序法）。
+冒泡排序法
+冒泡排序（Bubble Sorting）基本思想是： 通过对待排序序列从后向前（从下标较大的元素开始）， 依次比较相邻元素的值， 若发现逆序则交换， 使值较大的元素逐渐从前移向后部，就像水底下的气泡一样逐渐向上冒
+以下无序数列进行排序
+{14，69，80，57，13}  升序排列
+
+总结冒泡排序特点
+1.我们一共有5个元素
+2.一共进行了 4轮排序，可以看成是外层循环
+3.每一轮排序可以确定一个数的位置， 比如第一轮排序确定最大数，第二轮排序，确定第二大的数的位置，以此类推
+4.当进行比较时，如果前面的数大于后面的数，就交换。
+5.每一轮比较在减少4->3->2->1
+分析思路-》代码
+先整死，
+===================
+public static void main(String[] args){
+		//化繁为简，先死后活
+		int []arr = {24,69,80,57,13};
+
+		/*第一轮 排序：目标把最大数放在最后
+		*/
+		
+      
+		
+			for(int j=0; j< 4; j++){
+
+			if(arr[j] > arr[j+1]){
+		            //
+				int temp =arr[j]; 
+			             arr[j] = arr[j+1]; 							
+				;// 用temp交换
+                                                        arr[j+1] = temp;
+						}
+						                    
+						}
+						System.out.println("==第一轮==");
+						    for(int i =0; i < arr.length; i++){
+							System.out.print(arr[i]+ "\t");}
+
+		
+                    	for(int j=0; j< 3; j++){
+
+						if(arr[j] > arr[j+1]){
+		            //
+							int temp =arr[j]; 
+							arr[j] = arr[j+1]; 							
+							;// 用temp交换
+                                arr[j+1] = temp;
+						}
+						                    
+						}
+						System.out.println("\n==第二轮==");
+						    for(int i =0; i < arr.length; i++){
+							System.out.print(arr[i]+ "\t");
+			}
+			                 	for(int j=0; j< 2; j++){
+
+									if(arr[j] > arr[j+1]){
+					            //
+										int temp =arr[j]; 
+										arr[j] = arr[j+1]; 							
+										;// 用temp交换
+			                                arr[j+1] = temp;
+									}
+									                    
+									}
+									System.out.println("\n==第三轮==");
+									    for(int i =0; i < arr.length; i++){
+										System.out.print(arr[i]+ "\t");
+					}
+					for(int j=0; j< 1; j++){
+
+									if(arr[j] > arr[j+1]){
+					            //
+										int temp =arr[j]; 
+										arr[j] = arr[j+1]; 							
+										;// 用temp交换
+			                                arr[j+1] = temp;
+									}
+									}                    
+									
+									System.out.println("\n==第四轮==");
+									    for(int i =0; i < arr.length; i++){
+
+										System.out.print(arr[i]+ "\t");
+
+
+
+            }     
+            }
+
+===========================
+把上面化简单，整活
+class BumBle{
+	public static void main(String[] args){
+		//化繁为简，先死后活
+		int []arr = {24,69,80,57,13,15,5200,55,65656,5};
+
+		/*第一轮 排序：目标把最大数放在最后
+		*/
+		
+      for(int a=0; a<=arr.length-1;a++ ){
+		
+			
+			for(int j=0; j< arr.length-1-a; j++){
+
+						if(arr[j] > arr[j+1]){
+		            //
+							int temp =arr[j]; 
+							arr[j] = arr[j+1]; 							
+							;// 用temp交换
+                                arr[j+1] = temp;
+						}
+						                    
+						}
+						System.out.println("\n"+"==第"+(a+1)+"轮==");
+						    for(int i =0; i < arr.length; i++){
+
+
+							System.out.print(arr[i]+ "\t");}
+
+		
+             }     
+            }
+            }            }
+
+
+
+
+
+
+
